@@ -54,6 +54,7 @@ TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/kernel
 #TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 #TARGET_KERNEL_ARCH := arm64
 #TARGET_USES_UNCOMPRESSED_KERNEL := true
+TARGET_KERNEL_HAVE_EXFAT := true
 BOARD_VENDOR := motorola-qcom
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 earlyprintk=msm_hsl_uart,0xf991e000 utags.blkdev=/dev/block/bootdevice/by-name/utags utags.backup=/dev/block/bootdevice/by-name/utagsBackup
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
@@ -169,7 +170,7 @@ BOARD_SEPOLICY_DIRS += \
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_clark
-TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_clark.c
+TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_clark.cpp
 
 # TWRP definitions
 DEVICE_RESOLUTION := 1440x2560
