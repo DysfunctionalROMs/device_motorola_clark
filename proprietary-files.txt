@@ -25,8 +25,13 @@ vendor/lib/rfsa/adsp/libmare_hexagon_skel.so
 # Audio
 bin/fm_qsoc_patches
 vendor/bin/audioflacapp
+lib/libaudioroute.so
+lib/hw/audio.primary.msm8992.so
 lib/hw/audio.motvr.default.so
 lib/libmotaudioutils.so
+lib/libtinyalsa.so
+lib/libtinycompress.so
+lib/libtinyxml.so
 bin/fmconfig
 bin/fmfactorytest
 bin/fmfactorytestserver
@@ -97,6 +102,7 @@ etc/firmware/rampatch_tlv_2.1.tlv
 etc/firmware/rampatch_tlv_3.0.tlv
 etc/firmware/rampatch_tlv_3.2.tlv
 vendor/lib/libbtnv.so
+vendor/lib/libbt-vendor.so
 
 # Camera
 bin/mm-qcamera-daemon
@@ -247,9 +253,28 @@ vendor/lib64/libthermalioctl.so
 vendor/lib/libthermalclient.so
 vendor/lib/libqti-perfd-client.so
 
+# DM/Sprint
+-app/DMConfigUpdateLight/DMConfigUpdateLight.apk
+-app/HiddenMenuLight/HiddenMenuLight.apk
+etc/permissions/com.android.omadm.service.xml
+etc/sysconfig/whitelist_com.android.omadm.service.xml
+lib/libdmengine.so
+lib/libdmjavaplugin.so
+-priv-app/CQATest/CQATest.apk
+-priv-app/ConnMO/ConnMO.apk
+-priv-app/DCMO/DCMO.apk
+-priv-app/DMService/DMService.apk
+lib/libdmengine.so:priv-app/DMService/lib/arm/libdmengine.so
+lib/libdmjavaplugin.so:priv-app/DMService/lib/arm/libdmjavaplugin.so
+-priv-app/DiagMon/DiagMon.apk
+-priv-app/LifetimeData/LifetimeData.apk
+-priv-app/SprintDM/SprintDM.apk
+
 # DRM
 # TZBSP
 bin/qseecomd
+etc/permissions/com.google.widevine.software.drm.xml
+framework/com.google.widevine.software.drm.jar
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
@@ -319,6 +344,11 @@ vendor/lib/liblocationservice.so
 vendor/lib/libquipc_os_api.so
 vendor/lib/libulp2.so
 lib/libloc_eng.so
+lib/hw/gps.default.so
+lib/libgps.utils.so
+lib/libloc_core.so
+vendor/lib64/libloc_xtra.so
+etc/izat.conf
 
 # Adreno GPU
 etc/firmware/a225p5_pm4.fw
@@ -397,16 +427,17 @@ vendor/lib/libdisp-aba.so
 vendor/lib/libsensor1.so
 
 # Qualcomm framework
-lib/librmnetctl.so
 vendor/lib/libdsutils.so
 vendor/lib/libqcci_legacy.so
 
 # CNE / DPM
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
+etc/permissions/cneapiclient.xml
+etc/permissions/com.motorola.motosignature.xml
 lib/libcnefeatureconfig.so
 framework/com.motorola.motosignature.jar
--priv-app/CNEService.apk
+-priv-app/CNEService/CNEService.apk
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
@@ -420,6 +451,7 @@ vendor/lib/libvendorconn.so
 vendor/lib/libwqe.so
 
 # Radio
+-app/ims/ims.apk
 -app/MotoSignatureApp/MotoSignatureApp.apk
 bin/charge_only_mode
 bin/diag_klog
@@ -454,7 +486,6 @@ etc/diag_mdlog/WLAN_V1.cfg
 etc/diag_mdlog/default.cfg
 etc/diag_mdlog/default.opts
 etc/sensors/sensor_def_qcomdev.conf
-etc/permissions/com.motorola.motosignature.xml
 etc/permissions/com.verizon.ims.xml
 etc/permissions/ims.xml
 etc/permissions/org.simalliance.openmobileapi.xml
@@ -469,13 +500,10 @@ lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
 -priv-app/atfwd/atfwd.apk
--priv-app/ims/ims.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
 vendor/lib/libimscamera_jni.so
 vendor/lib/libimsmedia_jni.so
-vendor/lib64/libimscamera_jni.so:priv-app/ims/lib/arm64/libimscamera_jni.so
-vendor/lib64/libimsmedia_jni.so:priv-app/ims/lib/arm64/libimsmedia_jni.so
 vendor/lib/liblqe.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libnetmgr.so
@@ -490,6 +518,7 @@ vendor/lib/libperipheral_client.so
 etc/firmware/synaptics-s2726-15052160-1d19d9-clark.tdat
 etc/firmware/synaptics-s3528-15071401-1e29b4-clark.tdat
 etc/firmware/synaptics-s3528ar-15071401-1e29b4-clark.tdat
+bin/init.mmi.touch.sh
 
 # Sensors
 bin/motosh
@@ -507,17 +536,9 @@ vendor/lib/egl/libQTapGLES.so
 
 # Wifi Firmware
 vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/liblowi_client.so
 vendor/lib/libwifiscanner.so
-vendor/lib/libxtadapter.so
-vendor/lib/libxtwifi_ulp_adaptor.so
-vendor/lib/libxtwifi_zpp_adaptor.so
 vendor/lib/libquipc_ulp_adapter.so
-bin/lowi-server
 vendor/bin/slim_ap_daemon
-bin/xtwifi-client
-bin/xtwifi-inet-agent
-etc/xtwifi.conf
 
 # Wat - weird files
 lib64/libadropbox.so
