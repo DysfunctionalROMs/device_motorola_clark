@@ -262,6 +262,8 @@ on post-fs-data
     # Setup folder for camera HAL subsystem
     mkdir /data/camera_dump 0750 media media
 
+    mkdir /data/hardware_revisions 0755 system system
+
     # Create PERFD deamon related dirs
     mkdir /data/misc/perfd 0755 root system
     chmod 2755 /data/misc/perfd
@@ -280,6 +282,7 @@ on post-fs-data
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
     mkdir /data/misc/dts 0770 media audio
+    mkdir /data/misc/sensors 0775 root root 
 
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
@@ -397,11 +400,6 @@ on property:init.svc.wpa_supplicant=stopped
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
 
-# Binding fuse mount point to /storage/emulated/legacy
-on property:init.svc.sdcard=running
-    wait /mnt/shell/emulated/0
-    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
-
 on property:init.svc.per_mgr=running
     start per_proxy
 
@@ -439,7 +437,7 @@ service rfs_access /system/bin/rfs_access
 
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
-    user bluetooth
+    user root
     group bluetooth qcom_diag log
     disabled
 
@@ -576,18 +574,6 @@ service location_mq /system/bin/location-mq
     group gps
     disabled
 
-service xtwifi_inet /system/bin/xtwifi-inet-agent
-    class late_start
-    user gps
-    group inet gps
-    disabled
-
-service xtwifi_client /system/bin/xtwifi-client
-    class late_start
-    user gps
-    group net_admin wifi inet gps
-    disabled
-
 service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
@@ -679,10 +665,6 @@ service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root inet
 
-#service dpmd /system/bin/dpmd
-#    class late_start
-#    socket dpmd stream 660 root system
-
 service ssr_setup /system/bin/ssr_setup
     oneshot
     disabled
@@ -762,22 +744,25 @@ service qcom-sh /system/bin/sh /init.qcom.sh
     user root
     oneshot
 
-service mmi-block-perm /system/bin/sh /init.mmi.block_perm.sh
+service mmi-block-perm /init.mmi.block_perm.sh
+    seclabel u:r:init_block_perm:s0
     class main
     user root
     oneshot
 
-service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
+service mmi-boot-sh /init.mmi.boot.sh
+    seclabel u:r:mmi_boot:s0
+    class core
+    user root
+    group root system mot_tcmd
+    oneshot
+
+service mmi-touch-sh /system/bin/init.mmi.touch.sh synaptics
     class core
     user root
     oneshot
 
-service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh synaptics
-    class core
-    user root
-    oneshot
-
-service hw_revs /system/bin/sh /system/bin/hardware_revisions.sh
+service hw_revs /system/bin/hardware_revisions.sh
     class late_start
     user system
     group system
