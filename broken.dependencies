@@ -1,9 +1,9 @@
 [
   {
     "remote":      "github",
-    "repository": "AICP/kernel_motorola_msm8992",
+    "repository": "Project-Broken-Clark/kernel_motorola_msm8992",
     "target_path": "kernel/motorola/msm8992",
-    "branch":      "mm6.0"
+    "branch":      "m-caf"
   },
   {
     "remote":      "github",
