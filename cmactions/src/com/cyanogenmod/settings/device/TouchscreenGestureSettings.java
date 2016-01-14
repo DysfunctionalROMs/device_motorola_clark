@@ -24,7 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.android.internal.util.cm.ScreenType;
-...................................
+
 public class TouchscreenGestureSettings extends PreferenceActivity {
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
 
