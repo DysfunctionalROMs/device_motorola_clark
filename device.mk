@@ -118,13 +118,8 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     libmmcamera_interface \
     libmmjpeg_interface \
-<<<<<<< HEAD
     mm-jpeg-interface-test \
     mm-qcamera-app
-=======
-    mm-qcamera-app \
-    Snap
->>>>>>> 81e9e15... Cleanup, Enable MIDI, fix video recording
 
 # for off charging mode
 PRODUCT_PACKAGES += \
