@@ -20,5 +20,11 @@
     "repository": "CyanogenMod/android_hardware_sony_timekeep",
     "target_path": "hardware/sony/timekeep",
     "branch":      "cm-13.0"
-  }
+  },
+  {
+    "remote": "github",
+    "repository": "CyanogenMod/android_packages_apps_Snap",
+    "target_path": "packages/apps/Snap",
+    "branch": "cm-13.0"
+   }  
 ]
