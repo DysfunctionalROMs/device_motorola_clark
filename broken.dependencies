@@ -7,7 +7,7 @@
   },
   {
     "remote":      "github",
-    "repository": "Project Broken-Clark/proprietary_vendor_motorola",
+    "repository": "Project-Broken-Clark/proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
     "branch":      "mm6.0"
   },
