@@ -52,8 +52,7 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
 
     @Override
     public void screenTurnedOff() {
-        if (!mCMActionsSettings.isIrWakeupEnabled() &&
-            mCMActionsSettings.isPickUpEnabled() && !mEnabled) {
+        if (mCMActionsSettings.isPickUpEnabled() && !mEnabled) {
             if (CMActionsService.DEBUG) Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
             mEnabled = true;
@@ -63,18 +62,11 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         boolean thisStowed = (event.values[0] != 0);
-        if(thisStowed){
-            isStowedTime = System.currentTimeMillis();
-        } else if (mLastStowed && !thisStowed) {
-            long inPocketTime = System.currentTimeMillis() - isStowedTime;
-            if(inPocketTime >= IN_POCKET_MIN_TIME){
-                if (CMActionsService.DEBUG) Log.d(TAG, "Triggered after "
-                        + inPocketTime / 1000 + " seconds");
-                mSensorAction.action();
-            }
+        if (CMActionsService.DEBUG) Log.d(TAG, "event: " + thisStowed);
+        if (mLastStowed && !thisStowed) {
+            mSensorAction.action();
         }
         mLastStowed = thisStowed;
-        if (CMActionsService.DEBUG) Log.d(TAG, "event: " + thisStowed);
     }
 
     @Override
