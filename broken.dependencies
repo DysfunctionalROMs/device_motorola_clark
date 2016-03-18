@@ -22,9 +22,9 @@
     "branch":      "cm-13.0"
   },
   {
-    "remote": "github",
-    "repository": "CyanogenMod/android_packages_apps_Snap",
-    "target_path": "packages/apps/Snap",
-    "branch": "cm-13.0"
+    "remote":      "github",
+   "repository":  "BrokenROM/packages_apps_SnapdragonCamera",
+   "target_path": "packages/apps/SnapdragonCamera",
+   "branch":      "m6.0.1"
    }  
 ]
