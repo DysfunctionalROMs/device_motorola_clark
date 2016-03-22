@@ -120,7 +120,7 @@ PRODUCT_PACKAGES += \
     libmmjpeg_interface \
     mm-jpeg-interface-test \
     mm-qcamera-app \
-    Snap
+    SnapdragonCamera
 
 # for off charging mode
 PRODUCT_PACKAGES += \
