@@ -20,4 +20,4 @@ PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 # Broken Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Joshua Wiley (Orion116) & Aaron Wieneke (NaughtyMonkey75)"
+	DEVICE_MAINTAINERS="Josh Wiley (Orion116) & Aaron Wieneke (NaughtyMonkey75)"
